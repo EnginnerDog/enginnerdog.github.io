@@ -8,14 +8,14 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
+            overflow: hidden;
         }
 
         .desktop {
-            width: 800px;
-            height: 600px;
+            width: 100%;
+            height: 100%;
             background-color: #008080;
             position: relative;
-            overflow: hidden;
         }
 
         .start-menu {
@@ -47,12 +47,12 @@
         }
 
         .window {
-            width: 400px;
-            height: 300px;
+            width: 80%;
+            height: 70%;
             background-color: #fff;
             position: absolute;
-            top: 50px;
-            left: 50px;
+            top: 10%;
+            left: 10%;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
@@ -107,6 +107,30 @@
             margin-top: 10px;
             cursor: pointer;
         }
+
+        /* Add styling for Internet Explorer window here */
+        .internet-explorer {
+            width: 80%;
+            height: 70%;
+            background-color: white;
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+        /* Add styling for "FATORTON SEKRUITY 9999" app window here */
+        .fatoorton-app {
+            width: 80%;
+            height: 70%;
+            background-color: #d5d5d5;
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: none;
+        }
     </style>
     <title>Windows 95 Simulator</title>
 </head>
@@ -115,7 +139,8 @@
         <div class="start-menu">
             <button class="start-button">Start</button>
             <div class="start-menu-content">
-                <!-- Add Start Menu items here -->
+                <button class="internet-explorer-button">Internet Explorer</button>
+                <button class="fatoorton-app-button">FATORTON SEKRUITY 9999</button>
             </div>
         </div>
         <div class="window">
@@ -130,28 +155,69 @@
                 <!-- Add window content here -->
             </div>
         </div>
+        <div class="internet-explorer">
+            <div class="window-title-bar">
+                <div class="window-title">Internet Explorer</div>
+                <div class="window-buttons">
+                    <button class="window-minimize-button">-</button>
+                    <button class="window-close-button">X</button>
+                </div>
+            </div>
+            <div class="window-content">
+                <!-- Add Internet Explorer content here -->
+                <iframe src="https://www.google.com" style="width: 100%; height: 100%; border: none;"></iframe>
+            </div>
+        </div>
+        <div class="fatoorton-app">
+            <div class="window-title-bar">
+                <div class="window-title">FATORTON SEKRUITY 9999</div>
+                <div class="window-buttons">
+                    <button class="window-minimize-button">-</button>
+                    <button class="window-close-button">X</button>
+                </div>
+            </div>
+            <div class="window-content">
+                <!-- Redirect to the YouTube video when the button is clicked -->
+                <script>
+                    const fatoortonAppButton = document.querySelector('.fatoorton-app-button');
+                    const fatoortonAppWindow = document.querySelector('.fatoorton-app');
+
+                    fatoortonAppButton.addEventListener('click', () => {
+                        window.location.href = 'https://www.youtube.com/watch?v=iYGTbrYi914';
+                    });
+                </script>
+            </div>
+        </div>
     </div>
     <script>
-        // Create a function to show the popup
-        function showPopup() {
-            const popup = document.createElement('div');
-            popup.className = 'popup';
-            popup.innerText = 'lol, this is just a really crap prototype, just mess around';
-            document.body.appendChild(popup);
+        const startButton = document.querySelector('.start-button');
+        const startMenu = document.querySelector('.start-menu');
+        const internetExplorerButton = document.querySelector('.internet-explorer-button');
+        const fatoortonAppButton = document.querySelector('.fatoorton-app-button');
+        const minimizeButton = document.querySelector('.window-minimize-button');
+        const closeButton = document.querySelector('.window-close-button');
+        const internetExplorerWindow = document.querySelector('.internet-explorer');
+        const fatoortonAppWindow = document.querySelector('.fatoorton-app');
 
-            // Add a close button
-            const closeButton = document.createElement('button');
-            closeButton.innerText = 'Close';
-            closeButton.className = 'popup-close-button';
-            popup.appendChild(closeButton);
+        startButton.addEventListener('click', () => {
+            startMenu.style.left = '0';
+        });
 
-            closeButton.addEventListener('click', () => {
-                document.body.removeChild(popup);
-            });
-        }
+        internetExplorerButton.addEventListener('click', () => {
+            internetExplorerWindow.style.display = 'block';
+        });
 
-        // Call the function to show the popup
-        showPopup();
+        fatoortonAppButton.addEventListener('click', () => {
+            fatoortonAppWindow.style.display = 'block';
+        });
+
+        minimizeButton.addEventListener('click', () => {
+            // Minimize window code here
+        });
+
+        closeButton.addEventListener('click', () => {
+            // Close window code here
+        });
     </script>
 </body>
 </html>
