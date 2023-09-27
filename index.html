@@ -8,7 +8,6 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            overflow: hidden;
         }
 
         .desktop {
@@ -42,8 +41,14 @@
             margin-bottom: 10px;
         }
 
-        .start-menu-content {
-            /* Add styling for Start Menu items here */
+        /* Add styling for Start Menu items here */
+        .start-menu-content button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            margin-bottom: 10px;
         }
 
         .window {
@@ -85,29 +90,6 @@
             font-size: 18px;
         }
 
-        .popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            border: 2px solid #000;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            text-align: center;
-            font-size: 18px;
-        }
-
-        .popup-close-button {
-            background-color: transparent;
-            border: none;
-            color: #000;
-            font-size: 16px;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-
         /* Add styling for Internet Explorer window here */
         .internet-explorer {
             width: 80%;
@@ -130,6 +112,46 @@
             left: 10%;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             display: none;
+            overflow: auto; /* Enable scrollbars for content overflow */
+        }
+
+        .fatoorton-title-bar {
+            background-color: #00a2e8;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+        }
+
+        .fatoorton-title {
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .fatoorton-buttons {
+            display: flex;
+            gap: 5px;
+            margin-right: 10px;
+        }
+
+        .fatoorton-content {
+            padding: 10px;
+            height: 100%;
+        }
+
+        .fatoorton-text {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .fatoorton-button {
+            background-color: #00a2e8;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
         }
     </style>
     <title>Windows 95 Simulator</title>
@@ -164,28 +186,22 @@
                 </div>
             </div>
             <div class="window-content">
-                <!-- Add Internet Explorer content here -->
                 <iframe src="https://www.google.com" style="width: 100%; height: 100%; border: none;"></iframe>
             </div>
         </div>
         <div class="fatoorton-app">
-            <div class="window-title-bar">
-                <div class="window-title">FATORTON SEKRUITY 9999</div>
-                <div class="window-buttons">
+            <div class="fatoorton-title-bar">
+                <div class="fatoorton-title">FATORTON SEKRUITY 9999</div>
+                <div class="fatoorton-buttons">
                     <button class="window-minimize-button">-</button>
                     <button class="window-close-button">X</button>
                 </div>
             </div>
-            <div class="window-content">
-                <!-- Redirect to the YouTube video when the button is clicked -->
-                <script>
-                    const fatoortonAppButton = document.querySelector('.fatoorton-app-button');
-                    const fatoortonAppWindow = document.querySelector('.fatoorton-app');
-
-                    fatoortonAppButton.addEventListener('click', () => {
-                        window.location.href = 'https://www.youtube.com/watch?v=iYGTbrYi914';
-                    });
-                </script>
+            <div class="fatoorton-content">
+                <p class="fatoorton-text">
+                    Welcome to FATORTON SEKRUITY 9999. This is a highly secure application.
+                </p>
+                <button class="fatoorton-button" onclick="openYouTube()">Open YouTube</button>
             </div>
         </div>
     </div>
@@ -218,6 +234,10 @@
         closeButton.addEventListener('click', () => {
             // Close window code here
         });
+
+        function openYouTube() {
+            window.open('https://www.youtube.com/watch?v=iYGTbrYi914');
+        }
     </script>
 </body>
 </html>
