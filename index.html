@@ -8,6 +8,7 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
+            overflow: hidden;
         }
 
         .desktop {
@@ -41,27 +42,41 @@
             margin-bottom: 10px;
         }
 
-        /* Add styling for Start Menu items here */
-        .start-menu-content button {
-            background-color: transparent;
-            border: none;
-            color: white;
-            font-size: 18px;
+        /* Desktop Icons */
+        .desktop-icon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: #00a2e8;
+            border: 2px solid #008080;
+            border-radius: 4px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            margin-bottom: 10px;
         }
 
-        .window {
-            width: 80%;
-            height: 70%;
+        .desktop-icon img {
+            max-width: 40px;
+            max-height: 40px;
+        }
+
+        /* App Window */
+        .app-window {
+            width: 400px;
+            height: 300px;
             background-color: #fff;
             position: absolute;
-            top: 10%;
-            left: 10%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: none;
         }
 
-        .window-title-bar {
+        .app-title-bar {
             background-color: #00a2e8;
             color: white;
             display: flex;
@@ -70,88 +85,19 @@
             padding: 5px;
         }
 
-        .window-title {
+        .app-title {
             font-weight: bold;
             margin-left: 10px;
         }
 
-        .window-buttons {
+        .app-buttons {
             display: flex;
             gap: 5px;
             margin-right: 10px;
         }
 
-        .window-minimize-button,
-        .window-close-button {
-            background-color: transparent;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 18px;
-        }
-
-        /* Add styling for Internet Explorer window here */
-        .internet-explorer {
-            width: 80%;
-            height: 70%;
-            background-color: white;
-            position: absolute;
-            top: 10%;
-            left: 10%;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            display: none;
-        }
-
-        /* Add styling for "FATORTON SEKRUITY 9999" app window here */
-        .fatoorton-app {
-            width: 80%;
-            height: 70%;
-            background-color: #d5d5d5;
-            position: absolute;
-            top: 10%;
-            left: 10%;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            display: none;
-            overflow: auto; /* Enable scrollbars for content overflow */
-        }
-
-        .fatoorton-title-bar {
-            background-color: #00a2e8;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 5px;
-        }
-
-        .fatoorton-title {
-            font-weight: bold;
-            margin-left: 10px;
-        }
-
-        .fatoorton-buttons {
-            display: flex;
-            gap: 5px;
-            margin-right: 10px;
-        }
-
-        .fatoorton-content {
+        .app-content {
             padding: 10px;
-            height: 100%;
-        }
-
-        .fatoorton-text {
-            font-size: 18px;
-            margin-top: 10px;
-        }
-
-        .fatoorton-button {
-            background-color: #00a2e8;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            font-size: 16px;
-            cursor: pointer;
         }
     </style>
     <title>Windows 95 Simulator</title>
@@ -165,74 +111,46 @@
                 <button class="fatoorton-app-button">FATORTON SEKRUITY 9999</button>
             </div>
         </div>
-        <div class="window">
-            <div class="window-title-bar">
-                <div class="window-title">My Window</div>
-                <div class="window-buttons">
-                    <button class="window-minimize-button">-</button>
-                    <button class="window-close-button">X</button>
-                </div>
-            </div>
-            <div class="window-content">
-                <!-- Add window content here -->
-            </div>
+        <!-- Desktop Icons -->
+        <div class="desktop-icon" style="top: 20px; left: 20px;">
+            <img src="my-computer-icon.png" alt="My Computer">
+            My Computer
         </div>
-        <div class="internet-explorer">
-            <div class="window-title-bar">
-                <div class="window-title">Internet Explorer</div>
-                <div class="window-buttons">
-                    <button class="window-minimize-button">-</button>
-                    <button class="window-close-button">X</button>
-                </div>
-            </div>
-            <div class="window-content">
-                <iframe src="https://www.google.com" style="width: 100%; height: 100%; border: none;"></iframe>
-            </div>
+        <div class="desktop-icon" style="top: 20px; left: 100px;">
+            <img src="internet-explorer-icon.png" alt="Internet Explorer">
+            Internet Explorer
         </div>
-        <div class="fatoorton-app">
-            <div class="fatoorton-title-bar">
-                <div class="fatoorton-title">FATORTON SEKRUITY 9999</div>
-                <div class="fatoorton-buttons">
+        <div class="desktop-icon" style="top: 20px; left: 180px;">
+            <img src="fatoorton-icon.png" alt="FATORTON SEKRUITY 9999">
+            FATORTON SEKRUITY 9999
+        </div>
+        <!-- App Window -->
+        <div class="app-window" id="fatoorton-app">
+            <div class="app-title-bar">
+                <div class="app-title">FATORTON SEKRUITY 9999</div>
+                <div class="app-buttons">
                     <button class="window-minimize-button">-</button>
-                    <button class="window-close-button">X</button>
+                    <button class="window-close-button">×</button>
                 </div>
             </div>
-            <div class="fatoorton-content">
-                <p class="fatoorton-text">
-                    Welcome to FATORTON SEKRUITY 9999. This is a highly secure application.
-                </p>
-                <button class="fatoorton-button" onclick="openYouTube()">Open YouTube</button>
+            <div class="app-content">
+                <p>Welcome to FATORTON SEKRUITY 9999. This is a highly secure application.</p>
+                <button onclick="openYouTube()">Open YouTube</button>
             </div>
         </div>
     </div>
     <script>
         const startButton = document.querySelector('.start-button');
         const startMenu = document.querySelector('.start-menu');
-        const internetExplorerButton = document.querySelector('.internet-explorer-button');
         const fatoortonAppButton = document.querySelector('.fatoorton-app-button');
-        const minimizeButton = document.querySelector('.window-minimize-button');
-        const closeButton = document.querySelector('.window-close-button');
-        const internetExplorerWindow = document.querySelector('.internet-explorer');
-        const fatoortonAppWindow = document.querySelector('.fatoorton-app');
-
+        const fatoortonAppWindow = document.getElementById('fatoorton-app');
+        
         startButton.addEventListener('click', () => {
             startMenu.style.left = '0';
         });
 
-        internetExplorerButton.addEventListener('click', () => {
-            internetExplorerWindow.style.display = 'block';
-        });
-
         fatoortonAppButton.addEventListener('click', () => {
             fatoortonAppWindow.style.display = 'block';
-        });
-
-        minimizeButton.addEventListener('click', () => {
-            // Minimize window code here
-        });
-
-        closeButton.addEventListener('click', () => {
-            // Close window code here
         });
 
         function openYouTube() {
