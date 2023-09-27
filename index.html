@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .desktop {
+            width: 800px;
+            height: 600px;
+            background-color: #008080;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .start-menu {
+            width: 200px;
+            height: 100%;
+            background-color: #00a2e8;
+            position: absolute;
+            top: 0;
+            left: -200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: left 0.3s ease-in-out;
+        }
+
+        .start-button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .start-menu-content {
+            /* Add styling for Start Menu items here */
+        }
+
+        .window {
+            width: 400px;
+            height: 300px;
+            background-color: #fff;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .window-title-bar {
+            background-color: #00a2e8;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+        }
+
+        .window-title {
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .window-buttons {
+            display: flex;
+            gap: 5px;
+            margin-right: 10px;
+        }
+
+        .window-minimize-button,
+        .window-close-button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 2px solid #000;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .popup-close-button {
+            background-color: transparent;
+            border: none;
+            color: #000;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <title>Windows 95 Simulator</title>
+</head>
+<body>
+    <div class="desktop">
+        <div class="start-menu">
+            <button class="start-button">Start</button>
+            <div class="start-menu-content">
+                <!-- Add Start Menu items here -->
+            </div>
+        </div>
+        <div class="window">
+            <div class="window-title-bar">
+                <div class="window-title">My Window</div>
+                <div class="window-buttons">
+                    <button class="window-minimize-button">-</button>
+                    <button class="window-close-button">X</button>
+                </div>
+            </div>
+            <div class="window-content">
+                <!-- Add window content here -->
+            </div>
+        </div>
+    </div>
+    <script>
+        // Create a function to show the popup
+        function showPopup() {
+            const popup = document.createElement('div');
+            popup.className = 'popup';
+            popup.innerText = 'lol, this is just a really crap prototype, just mess around';
+            document.body.appendChild(popup);
+
+            // Add a close button
+            const closeButton = document.createElement('button');
+            closeButton.innerText = 'Close';
+            closeButton.className = 'popup-close-button';
+            popup.appendChild(closeButton);
+
+            closeButton.addEventListener('click', () => {
+                document.body.removeChild(popup);
+            });
+        }
+
+        // Call the function to show the popup
+        showPopup();
+    </script>
+</body>
+</html>
